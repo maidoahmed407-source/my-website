@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste & Toast - Restaurant & Cafe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amberCustom: '#D97706',
+                        darkBg: '#121212',
+                        cardBg: '#1E1E1E'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkBg text-white font-sans">
+
+    <nav class="flex justify-between items-center p-6 bg-cardBg border-b border-gray-800 sticky top-0 z-50">
+        <h1 class="text-2xl font-bold text-amberCustom"><i class="fa-solid fa-utensils mr-2"></i>Taste & Toast</h1>
+        <div class="space-x-6 hidden md:block text-gray-300">
+            <a href="#home" class="hover:text-amberCustom">Home</a>
+            <a href="#about" class="hover:text-amberCustom">About Us</a>
+            <a href="#menu" class="hover:text-amberCustom">Menu</a>
+        </div>
+        <button onclick="toggleCartModal()" class="bg-amberCustom text-white px-4 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-amber-600 transition">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span> Items | $<span id="cart-total">0</span>
+        </button>
+    </nav>
+
+    <section id="home" class="py-24 text-center px-4 bg-cover bg-center relative" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200');">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-4 text-amberCustom">Cunto & Cabitaan Casri Ah</h2>
+        <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">U dalabo si fudud internet-ka, una hel dalabkaaga oo kulul tooska WhatsApp-kaaga!</p>
+        <a href="#menu" class="bg-amberCustom hover:bg-amber-600 text-white px-8 py-3 rounded-full font-bold text-lg transition">Eeg Menu-ga</a>
+    </section>
+
+    <section id="about" class="py-16 px-6 max-w-5xl mx-auto text-center border-b border-gray-800">
+        <h3 class="text-3xl font-bold text-amberCustom mb-4">Naga Saabsan</h3>
+        <p class="text-gray-400 leading-relaxed max-w-3xl mx-auto">
+            Taste & Toast waa maqaayad casri ah oo bixisa cuntooyinka ugu dhadhanka badan, cabitaannada dabiiciga ah, macmacaanka, iyo kofida noocyadeeda kala duwan. Waxaan dhowraynaa nadaafadda iyo tayada sare iyadoo dalabkaaga laguugu leeyahay meel kasta oo aad joogto.
+        </p>
+    </section>
+
+    <section id="menu" class="py-16 px-6 max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-8 text-amberCustom">Our Menu</h3>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Steak">
+                <div>
+                    <span class="text-xs text-amberCustom font-bold uppercase">Cunto</span>
+                    <h4 class="text-lg font-bold">Special Beef Steak</h4>
+                    <p class="text-amberCustom font-bold mt-1">$35</p>
+                </div>
+                <button onclick="addToCart('Special Beef Steak', 35)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Pasta">
+                <div>
+                    <span class="text-xs text-amberCustom font-bold uppercase">Cunto</span>
+                    <h4 class="text-lg font-bold">Italian Chicken Pasta</h4>
+                    <p class="text-amberCustom font-bold mt-1">$30</p>
+                </div>
+                <button onclick="addToCart('Italian Chicken Pasta', 30)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Juice">
+                <div>
+                    <span class="text-xs text-blue-400 font-bold uppercase">Cabitaan</span>
+                    <h4 class="text-lg font-bold">Fresh Mango Smoothie</h4>
+                    <p class="text-amberCustom font-bold mt-1">$12</p>
+                </div>
+                <button onclick="addToCart('Fresh Mango Smoothie', 12)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Soda">
+                <div>
+                    <span class="text-xs text-blue-400 font-bold uppercase">Rasiin</span>
+                    <h4 class="text-lg font-bold">Ice Cold Mojito</h4>
+                    <p class="text-amberCustom font-bold mt-1">$15</p>
+                </div>
+                <button onclick="addToCart('Ice Cold Mojito', 15)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Cake">
+                <div>
+                    <span class="text-xs text-pink-400 font-bold uppercase">Macmacaan</span>
+                    <h4 class="text-lg font-bold">Chocolate Fudge Cake</h4>
+                    <p class="text-amberCustom font-bold mt-1">$20</p>
+                </div>
+                <button onclick="addToCart('Chocolate Fudge Cake', 20)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+            <div class="bg-cardBg p-4 rounded-xl border border-gray-800 flex flex-col justify-between">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500" class="w-full h-40 object-cover rounded-lg mb-4" alt="Coffee">
+                <div>
+                    <span class="text-xs text-yellow-600 font-bold uppercase">Coffee</span>
+                    <h4 class="text-lg font-bold">Caramel Cappuccino</h4>
+                    <p class="text-amberCustom font-bold mt-1">$12</p>
+                </div>
+                <button onclick="addToCart('Caramel Cappuccino', 12)" class="mt-4 bg-gray-800 hover:bg-amberCustom text-white py-2 rounded-lg font-bold transition">Add to Cart</button>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-cardBg w-full max-w-md p-6 rounded-2xl border border-gray-700">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-amberCustom">Dalabkaaga (Cart)</h3>
+                <button onclick="toggleCartModal()" class="text-gray-400 text-xl">&times;</button>
+            </div>
+            <div id="cart-items" class="space-y-3 max-h-60 overflow-y-auto mb-4 text-sm divide-y divide-gray-800">
+                <p class="text-gray-500 text-center">Cart-gaagu waa madhan yahay!</p>
+            </div>
+            <div class="border-t border-gray-700 pt-4 flex justify-between font-bold text-lg mb-6">
+                <span>Total:</span>
+                <span class="text-amberCustom">$<span id="modal-total">0</span></span>
+            </div>
+            <button onclick="sendWhatsAppOrder()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition">
+                <i class="fab fa-whatsapp text-2xl"></i> Toos uga Dalabo WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            total += price;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-total').innerText = total;
+            document.getElementById('modal-total').innerText = total;
+
+            const cartItemsContainer = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center">Cart-gaagu waa madhan yahay!</p>';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map((item, index) => `
+                <div class="flex justify-between items-center pt-2">
+                    <span>${item.name}</span>
+                    <span class="font-bold text-amberCustom">$${item.price}</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert("Fadlan marka hore cunto dooro!");
+                return;
+            }
+            
+            let phoneNumber = "256743787863"; // Nambarkaaga dhabta ah
+            let message = "Asc Taste & Toast! Waxaan rabbaa inaan dalbado:\n\n";
+            cart.forEach(item => {
+                message += `- ${item.name}: $${item.price}\n`;
+            });
+            message += `\n*Total Lacagta:* $${total}`;
+
+            let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
